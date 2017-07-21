@@ -5,31 +5,32 @@
 
 <div style="display:none" id="addMoniterPanel" title="Modal Dialog"
      data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide',
-              rootAttributes: {style: 'width:40%;height:60vh;overflow-x:hidden'}}">
+              rootAttributes: {style: 'width:40%;height:40vh;overflow-x:hidden'}}">
   <div class="oj-dialog-body">
     <div class="oj-flex-item oj-sm-12  oj-flex">
-      <div class="oj-flex-item oj-sm-12" >
+      <div class="oj-flex-item oj-sm-12 oj-padding" >
         <span class="oj-label-inline oj-sm-4" style="font-weight: 500;">Environment </span>
-        <input id="envSearch" class="oj-padding-start" placeholder="Search by env..."
+        <input id="envSearch" class="oj-padding-start oj-sm-7" placeholder="Search by env..."
                data-bind="ojComponent: {
           component: 'ojInputSearch',
           value: envSearch,
           options: envOption,
           rootAttributes: {style:'max-width: 20em'}}">
       </div>
-      <div class="oj-flex-item oj-sm-12" >
+      <div class="oj-flex-item oj-sm-12 oj-padding" >
         <span  class="oj-label-inline oj-sm-4" >Application Name</span>
-        <input id="text-input"
+        <input id="appInput"
                type="text"
                data-bind="ojComponent: {component: 'ojInputText',
-                                  value: appName}"/>
+                                  value: appName,rootAttributes: {style:'max-width: 20em'}}"/>
+      </div>
+      <div class="oj-flex-item oj-sm-12 oj-padding" >
+        <span  class="oj-label-inline oj-sm-4" style="font-weight: 500;">&nbsp;</span>
+        <button id="submitButton"  data-bind="ojComponent: {component: 'ojButton', label: 'Submit'}"> </button>
       </div>
     </div>
   </div>
 
-  <div class="oj-dialog-footer">
-    <button id="okButton" data-bind="ojComponent: {component: 'ojButton', label: 'OK'}"> </button>
-  </div>
 </div>
 
 <div class="justifyCenter">
