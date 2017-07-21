@@ -39,7 +39,7 @@ define(['knockout', 'ojs/ojcore', 'ojs/ojknockout', 'ojs/ojnavigationlist', 'ojs
         // Data for application name
         var appName = {
             "id": "qs",
-            "name": "JET Work Better"
+            "name": "Oracle Universal Dashboard"
         };
 
         //
@@ -47,7 +47,7 @@ define(['knockout', 'ojs/ojcore', 'ojs/ojknockout', 'ojs/ojnavigationlist', 'ojs
         //
         var toolbarData = {
             // user name in toolbar
-            "userName": "steven.king@myorg.com",
+            "userName": "kshitiz.anand@oracle.com",
             "toolbar_buttons": [
                 {
                     "label": "toolbar_search_button",
