@@ -549,7 +549,7 @@ div#ojAppNav2 ul.oj-navigationlist-element {
     margin-bottom: 10px;
 }
 #templateList #MyTeam {
-    background: url("images/dashboardpeople.png") no-repeat scroll 0 0 / 100% auto #313749;
+    background: url("images/unplanned.png") no-repeat scroll 0 0 / 100% auto #313749;
     opacity: 0.95;
 }
 #templateList.phonelayout #MyTeam {
@@ -1163,7 +1163,8 @@ html[dir="rtl"] .demo-oracle-icon {
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
     .demo-avatar-icon:before{
         content:url("images/avatar_24px_2x.png");
-        -webkit-transform:translate(-25%, -25%) scale(0.5);transform:translate(-25%, -25%) scale(0.5)
+        -webkit-trans
+        form:translate(-25%, -25%) scale(0.5);transform:translate(-25%, -25%) scale(0.5)
     }
 }
 

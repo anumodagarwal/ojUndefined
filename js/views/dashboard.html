@@ -12,22 +12,31 @@
 <script type="text/html" id="dashboardContent">
 
   <!-- My Team tile 2x2 -->
-
+ 
+<div id="MyTeam" class="oj-masonrylayout-tile-2x2" style = "background-image: url('css/images/planned.png')"role="link" data-bind="event:{keypress:onEnterLoadPeople}" tabindex="0" aria-label="My Organization">
   <!-- ko if: ready() -->
-  <div data-bind="ojModule: {name: 'plannedOutage', param: personProfile}"></div>
+  <div data-bind="ojModule: {name: 'plannedOutage'}"></div>
   <!-- /ko -->
+  </div>
+  
+    <div id="MyTeam" class="oj-masonrylayout-tile-2x2"  role="link" data-bind="event:{keypress:onEnterLoadPeople}" tabindex="0" aria-label="My Organization">
+        
+  <!-- ko if: ready() -->
+  <div data-bind="ojModule: {name: 'unplannedOutage'}"></div>
+  
+  <!-- /ko -->
+  </div>
+  
+  <div id="subscribed" class="oj-masonrylayout-tile-3x2"  role="link" data-bind="event:{keypress:onEnterLoadPeople}" tabindex="0" aria-label="My Organization">
+  <!-- ko if: ready() -->
+  <div data-bind="ojModule: {name: 'subscribedEnv'}"></div>
+  
+  <!-- /ko -->
+  </div>
+  
+ </div>
 
-  <!--
-     About Me tile 1x1
-    <div id="AboutMe" class="oj-masonrylayout-tile-1x1" aria-label="About Me" tabindex="0" role="link" data-bind="click: function(){history.pushState(null, '', 'index.html?root=person&emp=100'); oj.Router.sync();}, event:{keypress:onEnterLoadProfile}">
-      <h2 class="oj-flex oj-flex-items-pad aboutmetitle">
-        About Me
-      </h2>
-       ko if: ready
-      <img class="dash-photo-circular" alt="employee photo" data-bind="attr: {src: getPhoto(personProfile().empId)}"/>
-       /ko
-    </div>
-
+     <!--
      My Notifications tile 1x1
     <div id="MyNotifications" class="oj-masonrylayout-tile-1x1">
       <div class="oj-flex oj-flex-items-pad notifytitle">
