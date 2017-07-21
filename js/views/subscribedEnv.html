@@ -1,0 +1,55 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div style="display:none" id="modalDialogEnv" title="Modal Dialog"
+     data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide', rootAttributes: {style: 'width:30%;height:30vh;overflow-x:hidden'}}">
+  <div class="oj-dialog-body">
+        <label for="inputSearch">Input Search</label>
+  <input id="inputSearch" placeholder="Search..."
+        data-bind="ojComponent: {
+          component: 'ojInputSearch',
+          value: keyword,
+          options: tags,
+          rootAttributes: {style:'max-width: 20em'}}">
+  <div>
+    <br/>
+   <button id= "buttonOk"
+            data-bind="click: submitEnv, 
+                       ojComponent: { component: 'ojButton', label: 'Button' }">
+    </button>
+  </div>
+   
+  </div>
+</div>
+<div class="oj-panel"> 
+    <!-- ko if: visible-->
+<!--<ul id="listview" aria-label="list using observable array" 
+        data-bind="ojComponent: {
+            component: 'ojListView', 
+            data: envDataSource, 
+            selectionMode: 'single',
+            selection: selectedItems,
+            item: 
+            {
+                renderer: function(context)
+                {
+                    return context['item'];
+                }
+            }
+        }">
+    </ul>-->
+
+    <ul id="listview" aria-label="list using observable array" >
+        <li data-bind="foreach: envCollection">
+            <span data-bind="text:item"></span>
+        </li>
+</ul>
+
+    <!--/ko-->
+    <button id= "button"
+            data-bind="click: openEnvPopup, 
+                       ojComponent: { component: 'ojButton', label: 'Button' }">
+    </button>
+</div>

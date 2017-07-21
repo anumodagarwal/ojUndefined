@@ -7,7 +7,7 @@
 define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonrylayout', 'ojs/ojchart'],
         function (ko, oj, data) {
 
-          function PlannedOutageVM() {
+          function UnplannedOutageVM() {
             var self = this;
             self.ready = ko.observable(false);
             self.outageInfo = ko.observable("Outage Additional Info");
@@ -47,6 +47,6 @@ define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonryl
 
           }
 
-          return PlannedOutageVM;
+          return UnplannedOutageVM;
 
         });
