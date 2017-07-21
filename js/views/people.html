@@ -3,7 +3,7 @@
  The Universal Permissive License (UPL), Version 1.0
 -->
 
-<div style="display:none" id="addMoniterPanel" title="Modal Dialog"
+<div style="display:none" id="addMoniterPanelPopUp" title="Modal Dialog"
      data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide',
               rootAttributes: {style: 'width:40%;height:40vh;overflow-x:hidden'}}">
   <div class="oj-dialog-body">
@@ -26,7 +26,7 @@
       </div>
       <div class="oj-flex-item oj-sm-12 oj-padding" >
         <span  class="oj-label-inline oj-sm-4" style="font-weight: 500;">&nbsp;</span>
-        <button id="submitButton"  data-bind="ojComponent: {component: 'ojButton', label: 'Submit'}"> </button>
+        <button id="submitButton"  data-bind="click : addEnvPanel,ojComponent: {component: 'ojButton', label: 'Submit'}"> </button>
       </div>
     </div>
   </div>
@@ -37,10 +37,10 @@
   <div class="oj-flex oj-flex-items-pad">
     <div class="oj-flex-item oj-sm-12 oj-padding-bottom">
       <div class="oj-flex oj-flex-items-pad oj-sm-align-items-flex-end">
-        <div id="pageTitleContainer" class="oj-flex-item oj-sm-2">
-          <h1 style="margin-bottom:0">People</h1>
+        <div id="pageTitleContainer" class="oj-flex-item oj-sm-3">
+          <h1 style="margin-bottom:0">Cloud Monitoring</h1>
         </div>
-        <div class="oj-flex-item oj-sm-8  oj-flex oj-md-justify-content-center">
+        <div class="oj-flex-item oj-sm-7  oj-flex oj-md-justify-content-center">
           <div class="oj-flex-item" style="max-width: 400px; white-space: nowrap">
             <input aria-label="search box" placeholder="search" data-bind="value: nameSearch, valueUpdate: 'afterkeydown', ojComponent: {component: 'ojInputText', rootAttributes:{'style':'max-width:100%;'}}"/>
             <div id="searchIcon" class="demo-icon-sprite demo-icon-search demo-search-position"></div>
@@ -83,7 +83,7 @@
 <!-- this is the cardLayout template. It uses the ojListView component to do the layout and the ojPagingControl component for pagination. -->
 <script id="peopleCardLayout" type="text/html">
   <div class="oj-flex oj-flex-items-pad">
-
+    <!-- ko if:visible-->
     <ul id="listviewcard"
         class="oj-flex oj-listview-card-layout"
         data-bind="ojComponent: {component: 'ojListView',
@@ -91,7 +91,7 @@
                 rootAttributes: {style: 'width:100%'},
             item: {template: 'peoplecard_template'}}">
     </ul>
-
+    <!--/ko-->
   </div>
   <div class="oj-flex oj-flex-items-pad">
     <div id="paging" data-bind="ojComponent: {component: 'ojPagingControl', mode: 'loadMore', data: cardViewDataSource, pageSize: $root.large()? 12:6}">
@@ -125,7 +125,7 @@
           <div class="demo-employee-perf-label">Status</div>
         </div>
         <div class="oj-flex-item oj-sm-4">
-          <div class="demo-employee-perf" data-bind="text:$data['health'], style: {color: $data['health'] < 3 ? '#e95b54' : '#309fdb'}"></div>
+          <div class="demo-employee-perf" data-bind="click:$parent.showHealthLog, text:$data['health'], style: {color: $data['health'] < 3 ? '#e95b54' : '#309fdb'}"></div>
           <div class="demo-employee-perf-label">Health</div>
         </div>
       </div>

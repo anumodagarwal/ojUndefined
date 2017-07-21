@@ -8,7 +8,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
         {
           function PeopleViewModel() {
             var self = this;
-
+            self.visible = ko.observable(true);
             var defaultLayout = utils.readCookie('peopleLayout');
             if (defaultLayout) {
               self.peopleLayoutType = ko.observable(defaultLayout);
@@ -46,6 +46,51 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             }).fail(function (error) {
               console.log('Error in getting Environment  data: ' + error.message);
             });
+
+            self.addEnvPanel = function () {
+              var popItem = self.allPeople().pop();
+              self.allPeople().push({
+                "empId": "123",
+                "server": "Up",
+                "status": "Active",
+                "health": "Ok",
+                "firstName": "Alexander",
+                "lastName": "Khoo",
+                "title": "Purchasing Clerk",
+                "email": "AKHOO",
+                "phone": "515.127.4562",
+                "mobile": "515.127.4562",
+                "address": "2004 Bellevue Ct",
+                "city": "Seattle",
+                "state": "Washington",
+                "country": "US",
+                "postal": "98102",
+                "twitter": "Alexander",
+                "facebook": "Alexander",
+                "google": "Alexander",
+                "linkedIn": "Alexander",
+                "hireDate": "2004-09-14T00:00:00Z",
+                "compRatio": 97,
+                "salary": 6500.0,
+                "bonus": 1775.0,
+                "commission": 0.0,
+                "rating": 3,
+                "potential": 4,
+                "deptId": 30,
+                "mgrId": 114,
+                "deptName": "Purchasing",
+                "mgrFirstName": "Deb",
+                "mgrLastName": "Raphaely"
+              });
+              self.allPeople().push(popItem);
+              console.log(self.allPeople());
+              self.visible(false);
+              self.visible(true);
+            };
+
+            self.showHealthLog = function () {
+
+            }
 
             self.filteredAllPeople = ko.computed(function () {
               var peopleFilter = new Array();
