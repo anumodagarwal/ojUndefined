@@ -47,3 +47,45 @@
 </div> -->-->
 
 
+<ul id="listview" aria-label="list using array"
+    data-bind="ojComponent: {component: 'ojListView', data: dataSource, item: {template: 'server_template'}, selectionMode: 'single'}">
+</ul>
+
+<script type="text/html" id="server_template">
+  <li data-bind="attr: {id: $data['name']}">
+    <div class="oj-flex">
+      <div class="oj-lg-2 oj-md-2 oj-sm-12" style="max-width:70px;padding-bottom:5px">
+        <!--        <img data-bind="attr: {src: 'images/listView/'+ name +'.png', alt: name}"></img>-->
+      </div>
+      <div class="oj-lg-10 oj-md-10 oj-sm-12">
+        <div class="oj-flex row">
+          <div class="oj-lg-12">
+            <span class="header" data-bind="text: 'MyWebLogic '+name"></span>
+          </div>
+        </div>
+        <div class="oj-flex row">
+          <div class="oj-lg-4 oj-md-4 oj-sm-12">
+            <span class="data"><b>Version: </b><span data-bind="text: version"></span></span>
+          </div>
+          <div class="oj-lg-4 oj-md-4 oj-sm-12">
+            <span class="data"><b>Nodes: </b><span data-bind="text: nodes"></span></span>
+          </div>
+          <div class="oj-lg-4 oj-md-4 oj-sm-12">
+            <span class="data"><b>OCPUs: </b><span data-bind="text: cpu"></span></span>
+          </div>
+        </div>
+        <div class="oj-flex">
+          <div class="oj-lg-4 oj-md-4 oj-sm-12">
+            <span class="data"><b>Type: </b><span data-bind="text: type"></span></span>
+          </div>
+          <div class="oj-lg-4 oj-md-4 oj-sm-12">
+            <span class="data"><b>Load Balancer: </b><span data-bind="text: balancer"></span></span>
+          </div>
+          <div class="oj-lg-4 oj-md-4 oj-sm-12">
+            <span class="data"><b>Memory: </b><span data-bind="text: memory + ' GB'"></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</script>
