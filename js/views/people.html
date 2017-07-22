@@ -110,7 +110,11 @@
                     <div class="demo-employee-dept" data-bind="text: $data['deptName']"></div>-->
         </div>
         <div class="oj-flex-item oj-sm-2">
-          <img alt="download" class="oj-padding demo-employee-photo" data-bind="click:$parent.downloadEnvInfo, attr: {src: 'css/images/download.png'}"/>
+          <a id="downloadButton" href="data/server.log" download>
+            <img border="0" src="css/images/download.png">
+          </a>
+
+          <!--          <img alt="download" class="oj-padding demo-employee-photo" data-bind="click:$parent.downloadEnvInfo, attr: {src: 'css/images/download.png'}"/>-->
         </div>
       </div>
       </br>
@@ -121,11 +125,11 @@
           <div class=" oj-padding-start">Server </div>
         </div>
         <div class="oj-flex-item oj-sm-5 ">
-          <div class="demo-employee-perf oj-padding-bottom" data-bind="text:$data['apps_status'], style: {color: $data['apps_status'] < 3 ? '#e95b54' : '#309fdb'}"></div>
+          <img alt="employee image" class="" data-bind="attr: {src: $parent.statusIcon(apps_status)}"/>
           <div class="demo-employee-perf-label">Status</div>
         </div>
         <div class="oj-flex-item oj-sm-4 ">
-          <div class="demo-employee-perf oj-padding-bottom" data-bind="click:$parent.showHealthLog, text:$data['apps_health_type_name'], style: {color: $data['apps_health_type_name'] < 3 ? '#e95b54' : '#309fdb'}"></div>
+          <img alt="employee image" class="" data-bind="attr: {src: $parent.statusIcon(apps_health_type_name)}"/>
           <div class="demo-employee-perf-label">Health</div>
         </div>
       </div>

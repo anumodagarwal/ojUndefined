@@ -28,6 +28,14 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
               return response['employees'];
             };
 
+            self.statusIcon = function (status) {
+              return 'css/images/status-' + status + '.png';
+            };
+
+            self.healthIcon = function (health) {
+              return 'css/images/' + health + '.png';
+            }
+
             self.model = oj.Model.extend({
               idAttribute: 'user_subscription_id'
             });
