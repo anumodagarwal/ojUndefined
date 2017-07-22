@@ -47,10 +47,18 @@
           </div>
         </div>
         <div class="oj-flex-item oj-sm-2">
-          <button
-            data-bind="click: addEnvPanel,
-                       ojComponent: { component: 'ojButton', label: 'Add Panel' }">
+          <div id="layoutSet" class="oj-buttonset-width-auto" aria-label="Choose layout type."  style="float: right" data-bind="ojComponent: {component: 'ojButtonset', checked: peopleLayoutType}">
+            <label for="cardLayout"></label>
+            <input id="cardLayout" type="radio" name="layoutGroup" value="peopleCardLayout"
+                   data-bind="click: addEnvPanel,  ojComponent: {
+                                   component:'ojButton',
+                                   display: $root.large() ? 'all' : 'icons',
+                                   icons: {start:'demo-grid-icon-16 demo-icon-font'},
+                                   label: 'Add'
+                                   }"/>
+          </div>
         </div>
+
       </div>
     </div>
   </div>

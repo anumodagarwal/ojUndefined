@@ -72,7 +72,7 @@ require(['ojs/ojcore',
           var router = oj.Router.rootInstance;
           router.configure({
             'dashboard': {label: 'Dashboard', isDefault: true},
-            'people': {label: 'People'},
+            'people': {label: 'Cloud Monitoring'},
             'clampIntegration': {label: 'Clamp Integration'},
             'person': {label: 'Person',
               exit: function () {

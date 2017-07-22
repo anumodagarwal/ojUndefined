@@ -18,7 +18,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             self.allPeople = ko.observableArray([]);
             self.ready = ko.observable(false);
 
-            data.fetchData('js/data/employees.json').then(function (appData) {
+            data.fetchData('http://10.154.107.147:9090/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
               self.allPeople(appData.items);
             }).fail(function (error) {
               console.log('Error in getting People data: ' + error.message);
