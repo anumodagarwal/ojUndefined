@@ -18,7 +18,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             self.allPeople = ko.observableArray([]);
             self.ready = ko.observable(false);
 
-            data.fetchData('http://10.154.107.147:9090/ords/hr/demo/oal_clamp_apps_status/kshitiz.anand@oracle.com').then(function (people) {
+            data.fetchData(document.url + '/ords/hr/demo/oal_clamp_apps_status/kshitiz.anand@oracle.com').then(function (people) {
               self.allPeople(people.items);
             }).fail(function (error) {
               console.log('Error in getting People data: ' + error.message);
@@ -33,7 +33,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             });
 
             self.collection = new oj.Collection(null, {
-              url: 'http://10.154.107.147:9090/ords/hr/demo/oal_clamp_apps_status/kshitiz.anand@oracle.com',
+              url: document.url + '/ords/hr/demo/oal_clamp_apps_status/kshitiz.anand@oracle.com',
               model: self.model
             });
 
@@ -139,7 +139,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
 
               $.ajax({
                 type: "GET",
-                url: 'http://10.154.107.147:9090/ords/hr/demo/oal_clamp_apps_status/kshitiz.anand@oracle.com',
+                url: document.url + '/ords/hr/demo/oal_clamp_apps_status/kshitiz.anand@oracle.com',
                 async: false,
                 success: function (data) {
                   console.log("Data=" + data);
@@ -166,7 +166,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
               };
               $.ajax({
                 type: "POST",
-                url: 'http://10.154.107.147:9090/ords/hr/demo/oal_clamp_apps_status',
+                url: document.url + '/ords/hr/demo/oal_clamp_apps_status',
                 data: JSON.stringify(payload),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
@@ -179,7 +179,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
                   console.log(error);
                   $("#addMoniterPanel").ojDialog("close");
                   self.isVisible(false);
-                  data.fetchData('http://10.154.107.147:9090/ords/hr/demo/oal_clamp_apps_status/kshitiz.anand@oracle.com').then(function (people) {
+                  data.fetchData(document.url + '/ords/hr/demo/oal_clamp_apps_status/kshitiz.anand@oracle.com').then(function (people) {
                     self.allPeople(people.items);
                   }).fail(function (error) {
                     console.log('Error in getting People data: ' + error.message);

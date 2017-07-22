@@ -131,7 +131,7 @@ require(['ojs/ojcore',
               return router.moduleConfig;
             });
           }
-
+          document.url = 'http://10.191.204.208:9090';
           oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
           oj.Router.sync().then(
                   function () {

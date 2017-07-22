@@ -17,7 +17,7 @@ define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonryl
             self.plannedCount = ko.observable('-');
             self.outagePeriod = ko.observable('14-07-2017 to 21-07-2017');
             self.logArray = ko.observableArray([]);
-            $.getJSON('http://10.154.107.147:9090/ords/hr/demo/oal_env_outages_planned', function (data) {
+            $.getJSON(document.url + '/ords/hr/demo/oal_env_outages_planned', function (data) {
               self.logArray(data.items);
               self.plannedCount(data.count);
             });
@@ -32,7 +32,7 @@ define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonryl
             self.onEnterLoadPeople = function (data, event) {
               if (event.keyCode === 13) {
                 $("#modalDialog1").ojDialog("open");
-                $.getJSON('http://10.154.107.147:9090/ords/hr/demo/oal_env_outages_planned', function (data) {
+                $.getJSON(document.url + '/ords/hr/demo/oal_env_outages_planned', function (data) {
                   self.logArray(data.items);
                   self.plannedCount(data.count);
                 });

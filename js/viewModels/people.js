@@ -18,7 +18,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             self.allPeople = ko.observableArray([]);
             self.ready = ko.observable(false);
 
-            data.fetchData('http://10.154.107.147:9090/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
+            data.fetchData(document.url + '/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
               self.allPeople(appData.items);
             }).fail(function (error) {
               console.log('Error in getting People data: ' + error.message);
@@ -78,9 +78,9 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify(payload),
-                url: 'http://10.154.107.147:9090/ords/hr/demo/oal_apps_user_subscriptions/', success: function () {
+                url: document.url + '/ords/hr/demo/oal_apps_user_subscriptions/', success: function () {
                   self.visible(false);
-                  data.fetchData('http://10.154.107.147:9090/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
+                  data.fetchData(document.url + '/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
                     self.allPeople(appData.items);
                   }).fail(function (error) {
                     console.log('Error in getting People data: ' + error.message);
@@ -90,7 +90,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                   self.visible(false);
-                  data.fetchData('http://10.154.107.147:9090/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
+                  data.fetchData(document.url + '/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
                     self.allPeople(appData.items);
                   }).fail(function (error) {
                     console.log('Error in getting People data: ' + error.message);

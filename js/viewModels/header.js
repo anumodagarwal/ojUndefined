@@ -39,7 +39,7 @@ define(['knockout', 'ojs/ojcore', 'ojs/ojknockout', 'ojs/ojnavigationlist', 'ojs
     // Data for application name
     var appName = {
       "id": "qs",
-      "name": "Oracle Universal Dashboard"
+      "name": "Cloud Dashboard"
     };
 
     //
@@ -114,7 +114,7 @@ define(['knockout', 'ojs/ojcore', 'ojs/ojknockout', 'ojs/ojnavigationlist', 'ojs
         disabled: 'false',
         iconClass: ' demo-navi-people-icon oj-navigationlist-item-icon'
       },
-       {
+      {
         name: router.states[3].label,
         id: router.states[3].id,
         disabled: 'false',

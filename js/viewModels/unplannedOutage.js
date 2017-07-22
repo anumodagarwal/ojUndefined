@@ -19,7 +19,7 @@ define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonryl
             self.unplannedCount = ko.observable('-');
 
             self.logArray = ko.observableArray([]);
-            $.getJSON('http://10.154.107.147:9090/ords/hr/demo/oal_env_outages_current', function (data) {
+            $.getJSON(document.url + '/ords/hr/demo/oal_env_outages_current', function (data) {
               self.logArray(data.items);
               self.unplannedCount(data.count);
             });
@@ -34,7 +34,7 @@ define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonryl
             self.onEnterLoadPeople = function (data, event) {
               if (event.keyCode === 13) {
                 $("#unplannedDialog").ojDialog("open");
-                $.getJSON('http://10.154.107.147:9090/ords/hr/demo/oal_env_outages_current', function (data) {
+                $.getJSON(document.url + '/ords/hr/demo/oal_env_outages_current', function (data) {
                   self.logArray(data.items);
                   self.unplannedCount(data.count);
                 });

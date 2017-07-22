@@ -3,7 +3,7 @@
  The Universal Permissive License (UPL), Version 1.0
 -->
 <!-- ko if: visible-->
-<div style="display:none" id="addMoniterPanelPopUp" title="Modal Dialog"
+<div style="display:none" id="addMoniterPanelPopUp" title="Add Item"
      data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide',
               rootAttributes: {style: 'width:40%;height:40vh;overflow-x:hidden'}}">
   <div class="oj-dialog-body">
@@ -126,12 +126,12 @@
       </div>
       </br>
       <div class="oj-flex oj-flex-items-pad">
-        <div class="oj-flex-item oj-sm-3">
+        <div class="oj-flex-item oj-sm-4">
           <!--          <div class="demo-employee-tenure" data-bind="text: $data['server']"></div>-->
           <img alt="employee image" class="" data-bind="attr: {src: 'css/images/arrow-' + $data['server_status_type'].toLowerCase() + '.png'}"/>
           <div class=" oj-padding-start">Server </div>
         </div>
-        <div class="oj-flex-item oj-sm-5 ">
+        <div class="oj-flex-item oj-sm-4 ">
           <img alt="employee image" class="" data-bind="attr: {src: $parent.statusIcon(apps_status)}"/>
           <div class="demo-employee-perf-label">Status</div>
         </div>
