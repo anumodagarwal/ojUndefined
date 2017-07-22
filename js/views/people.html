@@ -2,7 +2,7 @@
  Copyright (c) 2014, 2017, Oracle and/or its affiliates.
  The Universal Permissive License (UPL), Version 1.0
 -->
-
+<!-- ko if: visible-->
 <div style="display:none" id="addMoniterPanelPopUp" title="Modal Dialog"
      data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide',
               rootAttributes: {style: 'width:40%;height:40vh;overflow-x:hidden'}}">
@@ -18,15 +18,15 @@
           rootAttributes: {style:'max-width: 20em'}}">
       </div>
       <div class="oj-flex-item oj-sm-12 oj-padding" >
-                <span  class="oj-label-inline oj-sm-4" >Application Name</span>
-                <input id="appInput"
-                       placeholder="Search by App.."
-                       data-bind="ojComponent: {
+        <span  class="oj-label-inline oj-sm-4" >Application Name</span>
+        <input id="appInput"
+               placeholder="Search by App.."
+               data-bind="ojComponent: {
             component: 'ojInputSearch',
             value: appName,
             options: appOption,
           rootAttributes: {style:'max-width: 20em'}}"/>
-            </div>
+      </div>
       <div class="oj-flex-item oj-sm-12 oj-padding" >
         <span  class="oj-label-inline oj-sm-4" style="font-weight: 500;">&nbsp;</span>
         <button id="submitButton"  data-bind="click : addEnvPanel,ojComponent: {component: 'ojButton', label: 'Submit'}"> </button>
@@ -195,3 +195,4 @@
     </div>
   </li>
 </script>
+<!--/ko-->

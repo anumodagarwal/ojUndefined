@@ -46,57 +46,63 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             }).fail(function (error) {
               console.log('Error in getting Environment  data: ' + error.message);
             });
-            
+
             self.appOption = ko.observableArray([]);
-                data.fetchData('js/data/appList.json').then(function (app) {
-                    self.appOption(app);
-                }).fail(function (error) {
-                    console.log('Error in getting Environment  data: ' + error.message);
-                });
+            data.fetchData('js/data/appList.json').then(function (app) {
+              self.appOption(app);
+            }).fail(function (error) {
+              console.log('Error in getting Environment  data: ' + error.message);
+            });
 
             self.addEnvPanel = function () {
-              var popItem = self.allPeople().pop();
-              self.allPeople().push({
-                "user_subscription_id": "123",
-                "server": "Up",
-                "status": "Active",
-                "health": "Ok",
-                "firstName": "Alexander",
-                "lastName": "Khoo",
-                "title": "Purchasing Clerk",
-                "email": "AKHOO",
-                "phone": "515.127.4562",
-                "mobile": "515.127.4562",
-                "address": "2004 Bellevue Ct",
-                "city": "Seattle",
-                "state": "Washington",
-                "country": "US",
-                "postal": "98102",
-                "twitter": "Alexander",
-                "facebook": "Alexander",
-                "google": "Alexander",
-                "linkedIn": "Alexander",
-                "hireDate": "2004-09-14T00:00:00Z",
-                "compRatio": 97,
-                "salary": 6500.0,
-                "bonus": 1775.0,
-                "commission": 0.0,
-                "rating": 3,
-                "potential": 4,
-                "deptId": 30,
-                "mgrId": 114,
-                "deptName": "Purchasing",
-                "mgrFirstName": "Deb",
-                "mgrLastName": "Raphaely"
+              var payload = {
+                "SERVER_ID": self.envSearch().toString(),
+                "APP_ID": self.appName().toString(),
+                "USER_ID": "kshitiz.anand@oracle.com"
+              }
+
+              $.ajax({
+                type: 'POST',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(payload),
+                url: 'http://10.154.107.147:9090/ords/hr/demo/oal_apps_user_subscriptions/', success: function () {
+                  self.visible(false);
+                  data.fetchData('http://10.154.107.147:9090/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
+                    self.allPeople(appData.items);
+                  }).fail(function (error) {
+                    console.log('Error in getting People data: ' + error.message);
+                  });
+                  self.visible(true);
+                  //notify.showAlert('Successfully Modified !!', 'alert-success');
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                  self.visible(false);
+                  data.fetchData('http://10.154.107.147:9090/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
+                    self.allPeople(appData.items);
+                  }).fail(function (error) {
+                    console.log('Error in getting People data: ' + error.message);
+                  });
+                  self.visible(true);
+                  //notify.showAlert('Error occurred while modifying Question !!', 'alert-error');
+                }
               });
-              self.allPeople().push(popItem);
-              console.log(self.allPeople());
-              self.visible(false);
-              self.visible(true);
             };
 
             self.downloadEnvInfo = function () {
+              $.ajax({
+                type: 'GET',
+                contentType: "css/images/download.png",
 
+                url: 'css/images/download.png', success: function (allData) {
+                  self.collection.refresh({silent: false});
+                  notify.showAlert('Successfully Modified !!', 'alert-success');
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                  notify.showAlert('Error occurred while modifying Question !!', 'alert-error');
+                }
+              });
             }
 
             self.filteredAllPeople = ko.computed(function () {
