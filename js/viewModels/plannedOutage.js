@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonrylayout', 'ojs/ojchart'],
+define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonrylayout', 'ojs/ojchart', 'ojs/ojdialog'],
         function (ko, oj, data) {
 
           function PlannedOutageVM() {
@@ -14,16 +14,15 @@ define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonryl
             self.personProfile = ko.observableArray([]);
             self.plannedToDate = ko.observable("21-07-2017");
             self.plannedFromDate = ko.observable("14-07-2017");
-            var model = oj.Model.extend({
-              idAttribute: 'questionId'
+            self.plannedCount = ko.observable('-');
+            self.outagePeriod = ko.observable('14-07-2017 to 21-07-2017');
+            self.logArray = ko.observableArray([]);
+            $.getJSON('http://10.154.107.147:9090/ords/hr/demo/oal_env_outages_planned', function (data) {
+              self.logArray(data.items);
+              self.plannedCount(data.count);
             });
-            self.collection = new oj.Collection(null, {
-              url: 'js/data/PlannedOutage.json',
-              //customPagingOptions: self.pagingOptions,
-              fetchSize: 10,
-              model: model
-            });
-            self.dataSource = new oj.CollectionTableDataSource(self.collection);
+
+            self.dataSource = new oj.ArrayTableDataSource(self.logArray);
 
             self.handleAttached = function (info) {
               self.ready(true);
@@ -33,6 +32,10 @@ define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonryl
             self.onEnterLoadPeople = function (data, event) {
               if (event.keyCode === 13) {
                 $("#modalDialog1").ojDialog("open");
+                $.getJSON('http://10.154.107.147:9090/ords/hr/demo/oal_env_outages_planned', function (data) {
+                  self.logArray(data.items);
+                  self.plannedCount(data.count);
+                });
               }
               return true;
             };
@@ -40,8 +43,8 @@ define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonryl
             self.openPopUp = function () {
               $("#modalDialog1").ojDialog("open");
             }
-            
-             self.openInfoPopUp = function () {
+
+            self.openInfoPopUp = function () {
               $("#modalDialog2").ojDialog("open");
             }
 

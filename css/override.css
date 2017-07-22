@@ -549,7 +549,7 @@ div#ojAppNav2 ul.oj-navigationlist-element {
   margin-bottom: 10px;
 }
 #templateList #MyTeam {
-  background: url("images/unplanned.png") no-repeat scroll 0 0 / 100% auto #313749;
+  background: url("images/unplanned.png") no-repeat scroll 0 0 / 100% auto #2e242c;
   opacity: 0.95;
 }
 #templateList.phonelayout #MyTeam {
@@ -562,6 +562,11 @@ div#ojAppNav2 ul.oj-navigationlist-element {
 #templateList #AveragePerformance {
   background-color: #ffffff;
   text-align: center;
+}
+
+.outageDate{
+  font-size: xx-large;
+  color: #e7a84b;
 }
 
 #templateList #MyActivities {
@@ -633,7 +638,7 @@ div#ojAppNav2 ul.oj-navigationlist-element {
 /* reduce the top margin when in a masonry layout tile so that the
    tile content does not overflow the bottom of the tile */
 #templateList #MyTeam .dastopmargin {
-  margin-top: 246px;
+  margin-top: 190px;
 }
 .aboutmetitle, .notifytitle {
   margin-top: 15px;
@@ -693,6 +698,14 @@ div#ojAppNav2 ul.oj-navigationlist-element {
 #MyActivities .mygrp {
   color: #333333;
 }
+
+.diricontxtKnowledgeBase{
+  background: url("images/open-book64.png") no-repeat 16px 0px;
+  height: 70px;
+  width: 100px;
+  margin: 0px auto;
+}
+
 .phonelayout .mygrp {
   color: #ffffff;
   margin-top: 40px;

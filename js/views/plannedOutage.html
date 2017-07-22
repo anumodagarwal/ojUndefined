@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<div style="display:none" id="modalDialog1" title="Modal Dialog"
-     data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide', rootAttributes: {style: 'width:80%;height:80vh;overflow-x:hidden'}}">
+<div style="display:none" id="modalDialog1" title="Impacted Environments"
+     data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide', rootAttributes: {style: 'width:80%;height:60vh;overflow-x:hidden'}}">
   <div class="oj-dialog-body">
 
     <div class="oj-flex-item oj-padding">
@@ -16,9 +16,6 @@
 
       </ul>
     </div>
-  </div>
-  <div class="oj-dialog-footer">
-    <button id="okButton" data-bind="ojComponent: {component: 'ojButton', label: 'OK'}"> </button>
   </div>
 </div>
 
@@ -38,17 +35,13 @@
       <div class="oj-flex-item">
         <div class="oj-flex">
           <div class="oj-sm-4 oj-flex-item">
-            <a id="editQuestion" data-bind="click:, text: environment" class="clm-element-pad"></a><br>
-            <div class="clm-element-pad">
-              <strong>Affected</strong>
-              <span data-bind="text: 'CLM'"></span>
-            </div>
+            <span data-bind="text: env_name" class="clm-element-pad " style="padding-left: 0.4rem"></span>
           </div>
           <div class="oj-sm-4 oj-flex-item ">
-            <span data-bind="text: Message" class="clm-element-pad " style="padding-left: 0.4rem"></span>
+            <span data-bind="text: 'Message'" class="clm-element-pad " style="padding-left: 0.4rem"></span>
           </div>
           <div class="oj-sm-3 oj-flex-item clm-element-pad ">
-            <span data-bind="text: Support" class="clm-element-pad"></span><br>
+            <span data-bind="text: 'Support'" class="clm-element-pad"></span><br>
 
           </div>
           <div class="oj-sm-1 oj-flex-item clm-position-adj">
@@ -60,19 +53,21 @@
   </li>
 </script>
 
-<div class="oj-flex oj-sm-justify-content-center oj-md-justify-content-center oj-lg-justify-content-center"></div>
-<h2 class="oj-flex oj-flex-items-pad dastopmargin">
+<div class="oj-flex oj-sm-justify-content-center oj-md-justify-content-center oj-lg-justify-content-center">
 
+</div>
+<h2 class="oj-flex oj-flex-items-pad dastopmargin">
+  <span class="outageDate oj-padding-start" data-bind="text:outagePeriod"></span>
 </h2>
 <!-- ko if: ready() -->
-
+<br><br>
 <div class="oj-flex oj-flex-items-pad teamcontent">
 
-  <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp">
-    <div class="diricontxt" data-bind = "click: openPopUp"><span data-bind="">1</span></div>
-    Impacted Environments</div>
-  <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp">
-    <div class="diricontxt" data-bind = "click: openInfoPopUp"></div>
+  <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp" style=" font-size: 18px;">
+    <div class="diricontxt" data-bind = "click: openPopUp"><span data-bind="text:plannedCount" ></span></div>
+    Environments</div>
+  <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp" style=" font-size: 18px;">
+    <div class=" diricontxtKnowledgeBase" data-bind = "click: openInfoPopUp"></div>
     Learn More</div>
 </div>
 <!-- /ko -->

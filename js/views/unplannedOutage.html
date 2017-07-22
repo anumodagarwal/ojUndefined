@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<div style="display:none" id="modalDialog1" title="Modal Dialog"
-     data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide', rootAttributes: {style: 'width:80%;height:80vh;overflow-x:hidden'}}">
+<div style="display:none" id="unplannedDialog" title="Impacted Environments"
+     data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide', rootAttributes: {style: 'width:80%;height:60vh;overflow-x:hidden'}}">
   <div class="oj-dialog-body">
 
     <div class="oj-flex-item oj-padding">
@@ -9,16 +9,13 @@
       <span class="oj-flex-items-pad"> 21/07/17</span>
     </div>
     <div class="oj-flex-item">
-      <ul id="listview" aria-label="list using collection" style="height:100%"
-          data-bind="ojComponent: {component: 'ojListView', data: dataSource, item: {template: 'outageList'},
+      <ul id="unplannedListview" aria-label="list using collection" style="height:100%"
+          data-bind="ojComponent: {component: 'ojListView', data: dataSourceUnplanned, item: {template: 'unplannedOutageList'},
                     selectionMode: 'single', rootAttributes: {style: 'width:100%;height:40vh;overflow-x:hidden'},
                     scrollPolicy: 'loadMoreOnScroll', scrollPolicyOptions: {fetchSize: 10,maxCount:1000}}">
 
       </ul>
     </div>
-  </div>
-  <div class="oj-dialog-footer">
-    <button id="okButton" data-bind="ojComponent: {component: 'ojButton', label: 'OK'}"> </button>
   </div>
 </div>
 
@@ -32,23 +29,23 @@
   </div>
 </div>
 
-<script type="text/html" id="outageList">
-  <li data-bind="attr: {id: 'question-'   }">
+<script type="text/html" id="unplannedOutageList">
+  <li data-bind="attr: {id: ''}">
     <div class="oj-flex">
       <div class="oj-flex-item">
         <div class="oj-flex">
           <div class="oj-sm-4 oj-flex-item">
-            <a id="editQuestion" data-bind="click:, text: environment" class="clm-element-pad"></a><br>
+            <a id="editQuestion" data-bind="click:, text: env_name" class="clm-element-pad"></a><br>
             <div class="clm-element-pad">
               <strong>Affected</strong>
               <span data-bind="text: 'CLM'"></span>
             </div>
           </div>
           <div class="oj-sm-4 oj-flex-item ">
-            <span data-bind="text: Message" class="clm-element-pad " style="padding-left: 0.4rem"></span>
+            <span data-bind="text: 'Message'" class="clm-element-pad " style="padding-left: 0.4rem"></span>
           </div>
           <div class="oj-sm-3 oj-flex-item clm-element-pad ">
-            <span data-bind="text: Support" class="clm-element-pad"></span><br>
+            <span data-bind="text: 'Support'" class="clm-element-pad"></span><br>
 
           </div>
           <div class="oj-sm-1 oj-flex-item clm-position-adj">
@@ -60,19 +57,22 @@
   </li>
 </script>
 
-<div class="oj-flex oj-sm-justify-content-center oj-md-justify-content-center oj-lg-justify-content-center"></div>
-<h2 class="oj-flex oj-flex-items-pad dastopmargin">
+<div class="oj-flex oj-sm-justify-content-center oj-md-justify-content-center oj-lg-justify-content-center">
 
+</div>
+<h2 class="oj-flex oj-flex-items-pad dastopmargin">
+  <span class="outageDate">&nbsp;</span>
 </h2>
 <!-- ko if: ready() -->
+<br><br>
 
 <div class="oj-flex oj-flex-items-pad teamcontent">
 
-  <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp">
-    <div class="diricontxt" data-bind = "click: openPopUp"><span data-bind="">1</span></div>
-    Impacted Environments</div>
-  <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp">
-    <div class="diricontxt" data-bind = "click: openInfoPopUp"></div>
+  <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp" style=" font-size: 18px;">
+    <div class="diricontxt" data-bind = "click: openPopUp"><span data-bind="text:unplannedCount "></span></div>
+    <span class="oj-padding"> Environments</span></div>
+  <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp " style=" font-size: 18px;">
+    <div class="diricontxtKnowledgeBase" data-bind = "click: openInfoPopUp"></div>
     Learn More</div>
 </div>
 <!-- /ko -->
