@@ -47,24 +47,9 @@
           </div>
         </div>
         <div class="oj-flex-item oj-sm-2">
-          <div id="layoutSet" class="oj-buttonset-width-auto" aria-label="Choose layout type."  style="float: right" data-bind="ojComponent: {component: 'ojButtonset', checked: peopleLayoutType}">
-            <label for="cardLayout"></label>
-            <input id="cardLayout" type="radio" name="layoutGroup" value="peopleCardLayout"
-                   data-bind="click: cardLayoutHandler,  ojComponent: {
-                                   component:'ojButton',
-                                   display: $root.large() ? 'all' : 'icons',
-                                   icons: {start:'demo-grid-icon-16 demo-icon-font'},
-                                   label: 'Card'
-                                   }"/>
-            <label for="listLayout"></label>
-            <input id="listLayout" type="radio" name="layoutGroup" value="peopleListLayout"
-                   data-bind="click: listLayoutHandler,  ojComponent: {
-                                    component:'ojButton',
-                                    display: $root.large() ? 'all' : 'icons',
-                                    icons: {start:'demo-icon-font demo-list-icon-16'},
-                                    label: 'List'
-                                    }"/>
-          </div>
+          <button
+            data-bind="click: addEnvPanel,
+                       ojComponent: { component: 'ojButton', label: 'Add Panel' }">
         </div>
       </div>
     </div>
@@ -102,30 +87,34 @@
 <!-- this is the content that is loaded by the ojListView component above. It uses standard responsive CSS design and oj-panels for the layout.  -->
 <script id="peoplecard_template" type="text/html">
   <li class="oj-flex-item oj-sm-12 oj-md-6 oj-lg-4 oj-xl-3" data-bind="event:{keypress:$parent.onEnter}" style="margin:0;border-style:none">
-    <!--ko if: $data['empId']!='' -->
+    <!--ko if: $data['user_subscription_id']!='' -->
     <div class="oj-panel oj-panel-alt1" style="margin: 5px 0px 10px 0px;" data-bind="click: $parent.loadPersonPage">
       <div class="oj-flex oj-flex-items-pad">
         <!--                    <div class="oj-flex-item oj-sm-4">
-                                <img alt="employee image" class="demo-circular demo-employee-photo" data-bind="attr: {src: $parent.getPhoto($data['empId'])}"/>
+                                <img alt="employee image" class="demo-circular demo-employee-photo" data-bind="attr: {src: $parent.getPhoto($data['user_subscription_id'])}"/>
                             </div>-->
-        <div class="oj-flex-item oj-sm-8">
-          <h2 class="demo-employee-name" aria-label="employee name" data-bind="text: $data['firstName'] + ' ' + $data['lastName']" tabindex="0"></h2>
+        <div class="oj-flex-item oj-sm-10">
+          <h2 class="demo-employee-name" aria-label="employee name" data-bind="text:$data['app_name'] + ' | ' + $data['server_name']" tabindex="0"></h2>
           <!--          <div class="demo-employee-title" data-bind="text: $data['title']"></div>
                     <div class="demo-employee-dept" data-bind="text: $data['deptName']"></div>-->
         </div>
-      </div>
-      <div class="oj-flex oj-flex-items-pad">
-        <div class="oj-flex-item oj-sm-4">
-          <!--          <div class="demo-employee-tenure" data-bind="text: $data['server']"></div>-->
-          <img alt="employee image" class="demo-circular demo-employee-photo" data-bind="attr: {src: 'css/images/arrow-' + $data['server'].toLowerCase() + '.png'}"/>
-          <div class="demo-employee-tenure-label">Server </div>
+        <div class="oj-flex-item oj-sm-2">
+          <img alt="download" class="oj-padding demo-employee-photo" data-bind="click:$parent.downloadEnvInfo, attr: {src: 'css/images/download.png'}"/>
         </div>
-        <div class="oj-flex-item oj-sm-4">
-          <div class="demo-employee-perf" data-bind="text:$data['status'], style: {color: $data['status'] < 3 ? '#e95b54' : '#309fdb'}"></div>
+      </div>
+      </br>
+      <div class="oj-flex oj-flex-items-pad">
+        <div class="oj-flex-item oj-sm-3">
+          <!--          <div class="demo-employee-tenure" data-bind="text: $data['server']"></div>-->
+          <img alt="employee image" class="" data-bind="attr: {src: 'css/images/arrow-' + $data['server_status_type'].toLowerCase() + '.png'}"/>
+          <div class=" oj-padding-start">Server </div>
+        </div>
+        <div class="oj-flex-item oj-sm-5 ">
+          <div class="demo-employee-perf oj-padding-bottom" data-bind="text:$data['apps_status'], style: {color: $data['apps_status'] < 3 ? '#e95b54' : '#309fdb'}"></div>
           <div class="demo-employee-perf-label">Status</div>
         </div>
-        <div class="oj-flex-item oj-sm-4">
-          <div class="demo-employee-perf" data-bind="click:$parent.showHealthLog, text:$data['health'], style: {color: $data['health'] < 3 ? '#e95b54' : '#309fdb'}"></div>
+        <div class="oj-flex-item oj-sm-4 ">
+          <div class="demo-employee-perf oj-padding-bottom" data-bind="click:$parent.showHealthLog, text:$data['apps_health_type_name'], style: {color: $data['apps_health_type_name'] < 3 ? '#e95b54' : '#309fdb'}"></div>
           <div class="demo-employee-perf-label">Health</div>
         </div>
       </div>
@@ -135,7 +124,7 @@
             </div>-->
     </div>
     <!--/ko-->
-    <!--ko if: $data['empId']=='' -->
+    <!--ko if: $data['user_subscription_id']=='' -->
     <div class="oj-panel oj-panel-alt1" style="margin: 5px 0px 10px 0px;height: 175px;" data-bind="click: $parent.addItem">
 
     </div>
@@ -167,8 +156,8 @@
     <div>
       <div class="oj-flex oj-flex-items-pad">
         <div class="oj-flex-item oj-lg-4 oj-md-4">
-          <!--                        <img alt="employee image" class="demo-circular demo-employee-photo" style="float:left;" data-bind="attr: {src: $parent.getPhoto($data['empId'])}"/>-->
-          <h2 class="demo-employee-name" data-bind="text: $data['firstName'] + ' ' + $data['lastName']"></h2>
+          <!--                        <img alt="employee image" class="demo-circular demo-employee-photo" style="float:left;" data-bind="attr: {src: $parent.getPhoto($data['user_subscription_id'])}"/>-->
+          <h2 class="demo-employee-name" data-bind="text:$data['app_name'] +' | ' + $data['server_name']"></h2>
           <div class="demo-employee-title" data-bind="text: $data['title']"></div>
           <div class="demo-employee-dept" data-bind="text: $data['deptName']"></div>
         </div>

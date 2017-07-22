@@ -18,8 +18,8 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             self.allPeople = ko.observableArray([]);
             self.ready = ko.observable(false);
 
-            data.fetchData('js/data/employees.json').then(function (people) {
-              self.allPeople(people.employees);
+            data.fetchData('js/data/employees.json').then(function (appData) {
+              self.allPeople(appData.items);
             }).fail(function (error) {
               console.log('Error in getting People data: ' + error.message);
             });
@@ -29,7 +29,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             };
 
             self.model = oj.Model.extend({
-              idAttribute: 'empId'
+              idAttribute: 'user_subscription_id'
             });
 
             self.collection = new oj.Collection(null, {
@@ -50,7 +50,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             self.addEnvPanel = function () {
               var popItem = self.allPeople().pop();
               self.allPeople().push({
-                "empId": "123",
+                "user_subscription_id": "123",
                 "server": "Up",
                 "status": "Active",
                 "health": "Ok",
@@ -88,7 +88,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
               self.visible(true);
             };
 
-            self.showHealthLog = function () {
+            self.downloadEnvInfo = function () {
 
             }
 
@@ -103,7 +103,7 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
                   ko.utils.arrayFilter(self.allPeople(),
                           function (r) {
                             var token = self.nameSearch().toLowerCase();
-                            if (r.firstName.toLowerCase().indexOf(token) === 0 || r.lastName.toLowerCase().indexOf(token) === 0) {
+                            if (r.app_name.toLowerCase().indexOf(token) === 0 || r.server_name.toLowerCase().indexOf(token) === 0) {
                               peopleFilter.push(r);
                             }
                           });
@@ -115,17 +115,17 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             });
 
             self.listViewDataSource = ko.computed(function () {
-              return new oj.ArrayTableDataSource(self.filteredAllPeople(), {idAttribute: 'empId'});
+              return new oj.ArrayTableDataSource(self.filteredAllPeople(), {idAttribute: 'user_subscription_id'});
             });
 
             self.cardViewDataSource = ko.computed(function () {
               return new oj.PagingTableDataSource(self.listViewDataSource());
             });
 
-            self.getPhoto = function (empId) {
+            self.getPhoto = function (user_subscription_id) {
               var src;
-              if (empId < 188) {
-                src = 'css/images/people/' + empId + '.png';
+              if (user_subscription_id < 188) {
+                src = 'css/images/people/' + user_subscription_id + '.png';
               } else {
                 src = 'css/images/people/nopic.png';
               }
@@ -166,34 +166,27 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             };
 
             self.loadPersonPage = function (emp) {
-              if (emp.empId) {
-                // Temporary code until go('person/' + emp.empId); is checked in 1.1.2
-                history.pushState(null, '', 'index.html?root=person&emp=' + emp.empId);
-                oj.Router.sync();
-              } else {
-                // Default id for person is 100 so no need to specify.
-                oj.Router.rootInstance.go('person');
-              }
+
             };
 
             self.onEnter = function (data, event) {
               if (event.keyCode === 13) {
                 var emp = {};
-                emp.empId = data.empId;
+                emp.user_subscription_id = data.user_subscription_id;
                 self.loadPersonPage(emp);
               }
               return true;
             };
 
             self.addItem = function (data, event) {
-              $("#addMoniterPanel").ojDialog("open");
+              $("#addMoniterPanelPopUp").ojDialog("open");
             };
 
             self.changeHandler = function (page, event) {
               if (event.option === 'selection') {
                 if (event.value[0]) {
                   var emp = {};
-                  emp.empId = event.value[0];
+                  emp.user_subscription_id = event.value[0];
                   self.loadPersonPage(emp);
                 }
               }

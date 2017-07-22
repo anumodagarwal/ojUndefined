@@ -25,7 +25,7 @@
 <div style="display:none" id="modalDialog2" title="Outage Information"
      data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide', rootAttributes: {style: 'width:80%;height:80vh;overflow-x:hidden'}}">
   <div class="oj-dialog-body">
-      <span data-bind="text: outageInfo"></span>
+    <span data-bind="text: outageInfo"></span>
   </div>
   <div class="oj-dialog-footer">
     <button id="okButton" data-bind="ojComponent: {component: 'ojButton', label: 'OK'}"> </button>
@@ -60,23 +60,23 @@
   </li>
 </script>
 
-<div class="oj-flex oj-sm-justify-content-center oj-md-justify-content-center oj-lg-justify-content-center">Planned Outage</div>
-  <h2 class="oj-flex oj-flex-items-pad dastopmargin">
-   
-  </h2>
-  <!-- ko if: ready() -->
+<div class="oj-flex oj-sm-justify-content-center oj-md-justify-content-center oj-lg-justify-content-center"></div>
+<h2 class="oj-flex oj-flex-items-pad dastopmargin">
 
-  <div class="oj-flex oj-flex-items-pad teamcontent">
-    
-    <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp">
-      <div class="diricontxt" data-bind = "click: openPopUp"><span data-bind="">1</span></div>
-      Impacted Environments</div>
-    <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp">
-      <div class="diricontxt" data-bind = "click: openInfoPopUp"></div>
-      Learn More</div>
-  </div>
-  <!-- /ko -->
-  
+</h2>
+<!-- ko if: ready() -->
+
+<div class="oj-flex oj-flex-items-pad teamcontent">
+
+  <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp">
+    <div class="diricontxt" data-bind = "click: openPopUp"><span data-bind="">1</span></div>
+    Impacted Environments</div>
+  <div class="oj-flex-item oj-lg-6 oj-md-6 oj-sm-6 mygrp">
+    <div class="diricontxt" data-bind = "click: openInfoPopUp"></div>
+    Learn More</div>
+</div>
+<!-- /ko -->
+
 
 
 
