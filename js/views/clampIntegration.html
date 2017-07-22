@@ -9,7 +9,7 @@
     <div class="oj-dialog-body">
         <div class="oj-flex-item oj-sm-12  oj-flex">
             <div class="oj-flex-item oj-sm-12 oj-padding" >
-                <span class="oj-label-inline oj-sm-4" style="font-weight: 500;">Environment </span>
+                <span class="oj-label-inline oj-sm-4">Environment </span>
                 <input id="envSearch" class="oj-padding-start oj-sm-7" placeholder="Search by env..."
                        data-bind="ojComponent: {
           component: 'ojInputSearch',
@@ -20,9 +20,12 @@
             <div class="oj-flex-item oj-sm-12 oj-padding" >
                 <span  class="oj-label-inline oj-sm-4" >Application Name</span>
                 <input id="appInput"
-                       type="text"
-                       data-bind="ojComponent: {component: 'ojInputText',
-                                  value: appName,rootAttributes: {style:'max-width: 20em'}}"/>
+                       placeholder="Search by App.."
+                       data-bind="ojComponent: {
+            component: 'ojInputSearch',
+            value: appName,
+            options: appOption,
+          rootAttributes: {style:'max-width: 20em'}}"/>
             </div>
             <div class="oj-flex-item oj-sm-12 oj-padding" >
                 <span  class="oj-label-inline oj-sm-4" style="font-weight: 500;">&nbsp;</span>

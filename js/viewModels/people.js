@@ -46,6 +46,13 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             }).fail(function (error) {
               console.log('Error in getting Environment  data: ' + error.message);
             });
+            
+            self.appOption = ko.observableArray([]);
+                data.fetchData('js/data/appList.json').then(function (app) {
+                    self.appOption(app);
+                }).fail(function (error) {
+                    console.log('Error in getting Environment  data: ' + error.message);
+                });
 
             self.addEnvPanel = function () {
               var popItem = self.allPeople().pop();

@@ -1,0 +1,32 @@
+
+[
+  {
+    "value": "AOR",
+    "label": "AOR"
+  },
+  {
+    "value": "OALPMACCR",
+    "label": "OALPMACCR"
+  },
+  {
+    "value": "HcmIntegrationUI",
+    "label": "HcmIntegrationUI"
+  },
+  {
+    "value": "CSM",
+    "label": "CSM"
+  },
+  {
+    "value": "CRM",
+    "label": "CRM"
+  },
+  {
+    "value": "PLM",
+    "label": "PLM"
+  },
+  {
+    "value": "SCM",
+    "label": "SCM"
+  }
+]
+
