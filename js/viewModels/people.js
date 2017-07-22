@@ -33,8 +33,12 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             };
 
             self.healthIcon = function (health) {
-              return 'css/images/' + health + '.png';
-            }
+              return 'css/images/health-' + health + '.png';
+            };
+
+            self.openLogPopUp = function () {
+              $("#logInfo").ojDialog("open");
+            };
 
             self.model = oj.Model.extend({
               idAttribute: 'user_subscription_id'
@@ -64,8 +68,8 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
 
             self.addEnvPanel = function () {
               var payload = {
-                "SERVER_ID": self.envSearch().toString(),
-                "APP_ID": self.appName().toString(),
+                "SERVER_ID": self.envSearch()[0].toString(),
+                "APP_ID": self.appName()[0].toString(),
                 "USER_ID": "kshitiz.anand@oracle.com"
               }
 

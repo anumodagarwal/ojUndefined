@@ -36,6 +36,16 @@
 
 </div>
 
+<div style="display:none" id="logInfo" title="Log Information"
+     data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide', rootAttributes: {style: 'width:80%;height:80vh;overflow-x:hidden'}}">
+  <div class="oj-dialog-body">
+    <span data-bind="text: 'Log Information will be displayed !!!'"></span>
+  </div>
+  <div class="oj-dialog-footer">
+    <button id="okButton" data-bind="ojComponent: {component: 'ojButton', label: 'OK'}"> </button>
+  </div>
+</div>
+
 <div class="justifyCenter">
   <div class="oj-flex oj-flex-items-pad">
     <div class="oj-flex-item oj-sm-12 oj-padding-bottom">
@@ -110,10 +120,7 @@
                     <div class="demo-employee-dept" data-bind="text: $data['deptName']"></div>-->
         </div>
         <div class="oj-flex-item oj-sm-2">
-          <a id="downloadButton" href="data/server.log" download>
-            <img border="0" src="css/images/download.png">
-          </a>
-
+          <img border="0" src="css/images/download.png" data-bind="click: $parent.openLogPopUp">
           <!--          <img alt="download" class="oj-padding demo-employee-photo" data-bind="click:$parent.downloadEnvInfo, attr: {src: 'css/images/download.png'}"/>-->
         </div>
       </div>
@@ -129,7 +136,7 @@
           <div class="demo-employee-perf-label">Status</div>
         </div>
         <div class="oj-flex-item oj-sm-4 ">
-          <img alt="employee image" class="" data-bind="attr: {src: $parent.statusIcon(apps_health_type_name)}"/>
+          <img alt="employee image" class="" data-bind="attr: {src: $parent.healthIcon(apps_health_type_name)}"/>
           <div class="demo-employee-perf-label">Health</div>
         </div>
       </div>

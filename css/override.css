@@ -15,6 +15,12 @@
   overflow:hidden;
 }
 
+.dashboardText{
+  font-size: 18px;
+  color: #32359b;
+  font-weight: bold;
+}
+
 .demo-page-content-area {
   background: #ffffff;
   border-radius: 3px;
@@ -549,7 +555,7 @@ div#ojAppNav2 ul.oj-navigationlist-element {
   margin-bottom: 10px;
 }
 #templateList #MyTeam {
-  background: url("images/unplanned.png") no-repeat scroll 0 0 / 100% auto #2e242c;
+  background: url("images/unplanned.png") no-repeat scroll 0 0 / 100% auto #2f7594;
   opacity: 0.95;
 }
 #templateList.phonelayout #MyTeam {
