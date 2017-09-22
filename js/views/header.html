@@ -1,11 +1,4 @@
-<!--
- Copyright (c) 2014, 2017, Oracle and/or its affiliates.
- The Universal Permissive License (UPL), Version 1.0
- -->
-<!--
-   JET V1.1 appheader template
-   - Contains three main areas: appname/logo, global navigation, and application navigation.
--->
+
 <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
   <!-- Offcanvas toggle button -->
   <div class="oj-flex-bar-start oj-md-hide">
@@ -23,7 +16,7 @@
     <!-- Responsive Toolbar -->
     <div data-bind="ojComponent: {component:'ojToolbar'}">
       <button id="userMenu"
-        data-bind="ojComponent: {component: 'ojButton', label: userName,
+              data-bind="ojComponent: {component: 'ojButton', label: userName,
         display: $root.smallOnly() ? 'icons' : 'all',
         icons: $root.smallOnly() ? {start: 'oj-icon demo-avatar-icon', end: null} : {end: 'oj-component-icon oj-button-menu-dropdown-icon'},
         chroming: 'half', menu: '#demoAppheaderGlobalNavMenuId'}">
@@ -34,7 +27,7 @@
         <!-- /ko -->
       </ul>
       <div style="display:none" id="aboutDialog" title="About JET QuickStart Basic"
-        data-bind="ojComponent:{component: 'ojDialog',
+           data-bind="ojComponent:{component: 'ojDialog',
         rootAttributes: { style: 'max-width:620px;width:100%;'}}">
         <div class="oj-dialog-body">
           The Oracle JET WorkBetter application is meant as an example of how to setup a
@@ -47,15 +40,15 @@
           with the JET framework, please visit the <a href='http://oraclejet.org'>JET Website</a>
         </div>
         <footer class="oj-dialog-footer oj-web-applayout-footer"
-          role="contentinfo" data-bind="ojModule: 'footer'">
+                role="contentinfo" data-bind="ojModule: 'footer'">
         </footer>
       </div>
     </div>
   </div>
 </div>
 <div id="ojAppNav"
-  class="oj-web-applayout-navbar oj-sm-only-hide oj-web-applayout-max-width oj-navigationlist-item-dividers oj-md-condense oj-md-justify-content-center oj-lg-justify-content-flex-end"
-  data-bind="ojComponent: {component: 'ojNavigationList',
+     class="oj-web-applayout-navbar oj-sm-only-hide oj-web-applayout-max-width oj-navigationlist-item-dividers oj-md-condense oj-md-justify-content-center oj-lg-justify-content-flex-end"
+     data-bind="ojComponent: {component: 'ojNavigationList',
     drillMode: 'none',
     edge: 'top', navigationLevel: 'application',
     selection: $root.router.stateId(),

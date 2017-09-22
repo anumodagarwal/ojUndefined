@@ -18,7 +18,8 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
             self.allPeople = ko.observableArray([]);
             self.ready = ko.observable(false);
 
-            data.fetchData(document.url + '/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
+            //data.fetchData(document.url + '/ords/hr/demo/oal_apps_user_subscriptions/kshitiz.anand@oracle.com').then(function (appData) {
+            data.fetchData('js/data/employees.json').then(function (appData) {
               self.allPeople(appData.items);
             }).fail(function (error) {
               console.log('Error in getting People data: ' + error.message);
@@ -105,7 +106,6 @@ define(['ojs/ojcore', 'knockout', 'utils', 'data/data', 'ojs/ojrouter', 'ojs/ojk
               $.ajax({
                 type: 'GET',
                 contentType: "css/images/download.png",
-
                 url: 'css/images/download.png', success: function (allData) {
                   self.collection.refresh({silent: false});
                   notify.showAlert('Successfully Modified !!', 'alert-success');

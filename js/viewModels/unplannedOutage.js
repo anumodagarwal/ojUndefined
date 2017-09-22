@@ -11,7 +11,6 @@ define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonryl
             var self = this;
             self.ready = ko.observable(false);
             self.outageInfo = ko.observable("Outage Additional Info");
-            self.personProfile = ko.observableArray([]);
             self.plannedToDate = ko.observable("21-07-2017");
             self.plannedFromDate = ko.observable("14-07-2017");
             self.outagePeriod = ko.observable('14-07-2017 to 21-07-2017');
@@ -19,16 +18,16 @@ define(['knockout', 'ojs/ojcore', 'data/data', 'ojs/ojknockout', 'ojs/ojmasonryl
             self.unplannedCount = ko.observable('-');
 
             self.logArray = ko.observableArray([]);
-            $.getJSON(document.url + '/ords/hr/demo/oal_env_outages_current', function (data) {
+            //$.getJSON(document.url + '/ords/hr/demo/oal_env_outages_current', function (data) {
+            $.getJSON('js/data/PlannedOutage.json', function (data) {
               self.logArray(data.items);
               self.unplannedCount(data.count);
             });
 
             self.dataSourceUnplanned = new oj.ArrayTableDataSource(self.logArray);
 
-            self.handleAttached = function (info) {
+            self.handleAttached = function () {
               self.ready(true);
-              self.personProfile(info);
             }
 
             self.onEnterLoadPeople = function (data, event) {

@@ -71,10 +71,10 @@ require(['ojs/ojcore',
         function (oj, ko, $, utils) {
           var router = oj.Router.rootInstance;
           router.configure({
-            'dashboard': {label: 'Server Outage', isDefault: true},
-            'people': {label: 'Cloud Monitoring'},
+            'serverOutage': {label: 'Server Outage', isDefault: true},
+            'cloudMonitoring': {label: 'Cloud Monitoring'},
             'clampIntegration': {label: 'Clamp Integration'},
-            'person': {label: 'Subscribed Environment',
+            'subscribedEnvironment': {label: 'Subscribed Environment',
               exit: function () {
                 var childRouter = router.currentState().value;
                 childRouter.dispose();

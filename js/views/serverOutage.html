@@ -1,0 +1,21 @@
+
+<h1 style="margin-bottom:0">Server Outage</h1>
+<hr>
+<div class="justifyCenter justifyCenterMasonryLayout">
+  <div id="masonryLayout" data-bind="ojComponent: {component: 'ojMasonryLayout',rootAttributes:{'style':'max-width:100%;top: 20px;left: 60px;'}}">
+    <div id="templateList" data-bind="template: 'dashboardContent'"></div>
+  </div>
+</div>
+
+<script type="text/html" id="dashboardContent">
+
+  <div id="MyTeam" class="oj-masonrylayout-tile-2x2 shadow" style = "background-image: url('css/images/scheduledmaintenance.png');"role="link" >
+    <div data-bind="ojModule: {name: 'plannedOutage'}"></div>
+  </div>
+
+  <div id="MyTeam" class="oj-masonrylayout-tile-2x2 oj-padding shadow"  role="link" style="top: 0px; left: 587px;">
+    <div data-bind="ojModule: {name: 'unplannedOutage'}"></div>
+  </div>
+
+</div>
+</script>
